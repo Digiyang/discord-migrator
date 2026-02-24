@@ -126,16 +126,20 @@ You will be prompted to choose a target platform, then confirm or enter credenti
 ## Project Structure
 
 ```
-discord_migrator/
-├── models.py                         ← platform-neutral ServerSnapshot dataclasses
-├── discord_reader.py                 ← reads Discord → ServerSnapshot
-├── migrator.py                       ← platform-agnostic migration engine
-├── adapters/
-│   ├── base.py                       ← abstract adapter interface
-│   ├── stoat.py                      ← Stoat adapter
-│   └── permissions/
-│       └── stoat.py                  ← Discord → Stoat permission mapping
-└── main.py                           ← CLI entry point
+discord-migrator/
+├── src/
+│   ├── main.py                       ← CLI entry point
+│   ├── models.py                     ← platform-neutral ServerSnapshot dataclasses
+│   ├── discord_reader.py             ← reads Discord → ServerSnapshot
+│   ├── migrator.py                   ← platform-agnostic migration engine
+│   └── adapters/
+│       ├── base.py                   ← abstract adapter interface
+│       ├── stoat.py                  ← Stoat adapter
+│       └── permissions/
+│           └── stoat.py              ← Discord → Stoat permission mapping
+├── install.sh
+├── requirements.txt
+└── README.md
 ```
 
 ---

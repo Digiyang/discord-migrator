@@ -38,7 +38,7 @@ mkdir -p "$BIN_DIR"
 cat > "$LAUNCHER" << EOF
 #!/usr/bin/env bash
 exec "\$HOME/.local/share/discord-migrator/.venv/bin/python" \\
-     "\$HOME/.local/share/discord-migrator/main.py" "\$@"
+     "\$HOME/.local/share/discord-migrator/src/main.py" "\$@"
 EOF
 chmod +x "$LAUNCHER"
 
