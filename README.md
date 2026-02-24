@@ -1,4 +1,17 @@
-# Discord Migrator
+```
+  ____  _                       _   __  __ _                 _
+ |  _ \(_)___  ___ ___  _ __ __| | |  \/  (_) __ _ _ __ __ _| |_ ___  _ __
+ | | | | / __|/ __/ _ \| '__/ _` | | |\/| | |/ _` | '__/ _` | __/ _ \| '__|
+ | |_| | \__ \ (_| (_) | | | (_| | | |  | | | (_| | | | (_| | || (_) | |
+ |____/|_|___/\___\___/|_|  \__,_| |_|  |_|_|\__, |_|  \__,_|\__\___/|_|
+                                              |___/
+```
+
+[![Issues](https://img.shields.io/github/issues/Digiyang/discord-migrator)](https://github.com/Digiyang/discord-migrator/issues)
+[![License](https://img.shields.io/github/license/Digiyang/discord-migrator)](https://github.com/Digiyang/discord-migrator/blob/main/LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)
+
+---
 
 Following Discord's age-verification changes, some communities are exploring alternative
 platforms. Migrating manually is tedious — you have to recreate every role, category, and
@@ -32,14 +45,23 @@ support for a new destination is a matter of implementing one file.
 
 ---
 
-## Requirements
+## Installation
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+curl -sSL https://raw.githubusercontent.com/Digiyang/discord-migrator/main/install.sh | bash
 ```
 
-Python 3.10+ required (uses `X | Y` union type hints).
+This will:
+- Clone the repo to `~/.local/share/discord-migrator`
+- Create a Python virtual environment and install dependencies
+- Add a `discord-migrator` launcher to `~/.local/bin`
+
+Running the command again updates the tool to the latest version.
+
+> **Requirements:** Python 3.10+, git
+
+> **PATH:** If `~/.local/bin` is not in your PATH, the installer will print the line
+> to add to your `~/.bashrc` or `~/.zshrc`.
 
 ---
 
@@ -69,7 +91,7 @@ prompt at runtime.
 ## Usage
 
 ```bash
-python main.py
+discord-migrator
 ```
 
 You will be prompted to choose a target platform, then confirm or enter credentials.
