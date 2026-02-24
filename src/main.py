@@ -31,8 +31,7 @@ ADAPTERS = {
 }
 
 ADAPTER_LABELS = {
-    "1": "Stoat          (stoat.chat)",
-    "2": "Matrix/Element (self-hosted or matrix.org)",
+    "1": "Stoat  (stoat.chat)",
 }
 
 # ── ANSI ──────────────────────────────────────────────────────────────────────
@@ -52,15 +51,16 @@ def banner():
 Migrates your Discord server structure to another platform.
 
 {YELLOW}What is migrated:{RESET}
-  ✔ Server name & description
-  ✔ Roles (with colours)
+  ✔ Server name, description & icon
+  ✔ Roles  (colours + permissions)
   ✔ Categories (in order)
-  ✔ Text channels, voice channels (with topics)
+  ✔ Text & voice channels  (with topics)
 
 {YELLOW}What is NOT migrated:{RESET}
   ✘ Message history  (Discord ToS + privacy)
-  ✘ Bot integrations (must be set up manually)
-  ✘ Fine-grained permissions (mapped as best-effort)
+  ✘ Members  (cannot force-join another platform)
+  ✘ Bot integrations  (platform-specific)
+  ✘ Custom emojis  (API limitations)
 """)
 
 
