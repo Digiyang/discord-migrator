@@ -21,17 +21,19 @@ from migrator import Migrator
 
 # ── Register adapters here ────────────────────────────────────────────────────
 from adapters.stoat import StoatAdapter
+from adapters.matrix import MatrixAdapter
 
 ADAPTERS = {
     "1": StoatAdapter,
-    # "2": MatrixAdapter,
+    "2": MatrixAdapter,
     # "3": GuildedAdapter,       ← add future adapters here
     # "4": MattermostAdapter,
     # "5": ZulipAdapter,
 }
 
 ADAPTER_LABELS = {
-    "1": "Stoat  (stoat.chat)",
+    "1": "Stoat          (stoat.chat)",
+    "2": "Matrix/Element (matrix.org or self-hosted)",
 }
 
 # ── ANSI ──────────────────────────────────────────────────────────────────────
