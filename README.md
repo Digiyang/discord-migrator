@@ -79,6 +79,10 @@ root (it is gitignored and will never be committed):
   "stoat": {
     "token": "your-stoat-bot-token",
     "server_id": "your-stoat-server-id"
+  },
+  "matrix": {
+    "homeserver": "https://matrix.org",
+    "token": "your-matrix-access-token"
   }
 }
 ```
@@ -113,6 +117,33 @@ You will be prompted to choose a target platform, then confirm or enter credenti
 5. Find your **Server ID**: open the server in the Stoat web app — the URL looks like
    `https://stoat.chat/server/SERVER_ID/...` — copy that value
 
+### Matrix / Element
+
+1. Have a Matrix account on a homeserver (see note below)
+2. Get your **access token** in Element:
+   **Settings → Help & About → Advanced → Access Token**
+3. The migrator will create a new Space automatically
+
+> **Roles:** Matrix has no native server-wide roles. Discord roles are mapped to
+> power level tiers (100 Admin / 50 Mod / 0 User) and applied to every room.
+> After migration the tool prints a mapping table — use it to manually assign
+> the correct power levels to your users in Element.
+
+> **⚠️ Rate limits on matrix.org:** The public matrix.org homeserver enforces strict
+> per-account room creation limits. Migrating a server with many channels will
+> almost certainly trigger a rate limit window of up to **60 minutes per hit**.
+> The tool will wait it out automatically and print a countdown, so the migration
+> will eventually complete — but it may take a long time.
+>
+> **Recommendations:**
+> - **Self-hosted homeserver (best):** Run your own Synapse instance — no rate limits,
+>   full control. See the [Synapse installation docs](https://element-hq.github.io/synapse/latest/setup/installation.html)
+>   or use the official Docker image (`matrixdotorg/synapse`).
+> - **Alternative public homeserver:** Some homeservers have more relaxed limits.
+>   Any Matrix account works — you are not locked to matrix.org.
+> - **matrix.org as a last resort:** It will work, but expect the migration to be slow
+>   on large servers. Use a fresh account to avoid accumulated rate limit history.
+
 ### Discord (source)
 
 1. Go to https://discord.com/developers/applications → **New Application** → **Bot**
@@ -135,8 +166,10 @@ discord-migrator/
 │   └── adapters/
 │       ├── base.py                   ← abstract adapter interface
 │       ├── stoat.py                  ← Stoat adapter
+│       ├── matrix.py                 ← Matrix/Element adapter
 │       └── permissions/
-│           └── stoat.py              ← Discord → Stoat permission mapping
+│           ├── stoat.py              ← Discord → Stoat permission mapping
+│           └── matrix.py             ← Discord → Matrix power level mapping
 ├── install.sh
 ├── requirements.txt
 └── README.md
